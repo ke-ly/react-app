@@ -3,12 +3,17 @@ import ReactDOM from 'react-dom';
 import {HashRouter as Router,Route,HashHistory} from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 import Signin from './views/signin';
-import PageList from "./views/List";
+import BossList from "./views/bosslist";
+import UserList from "./views/userlist";
+import My from "./views/my";
 ReactDOM.render(
     <Router history={HashHistory}>
         <div>
-            <Route path="/sign" component={Signin} />
-            <Route path="/list" component={PageList} />
+            <Route exact path='/' component={Signin}/>
+            <Route path="/sign" component={Signin} />            
+            <Route path="/boss" component={BossList} />
+            <Route path="/user" component={UserList} />
+            <Route path="/my" component={My} />
         </div>
     </Router>, 
     document.getElementById('root'));
