@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {HashRouter as Router,Route,HashHistory} from 'react-router-dom';
+import {BrowserRouter as Router,Route,HashHistory} from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 import Signin from './views/signin';
 import BossList from "./views/bosslist";

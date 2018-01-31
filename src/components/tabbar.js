@@ -9,7 +9,7 @@ class PageTabBar extends Component{
 
     render(){
         return(
-            <div style={{position:'fixed',bottom:0,width:'100%'}}>
+            <div style={{position:'fixed',bottom:0,width:'100%',zIndex:100}}>
                 <TabBar >       
                     <TabBar.Item 
                         title="老板" 
