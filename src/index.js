@@ -9,9 +9,11 @@ import registerServiceWorker from './registerServiceWorker';
 import Signin from './views/signin';
 import My from "./views/my";
 import reducer from './store/reducer';
+import "./style.css";
 
 const store = createStore(reducer,compose(
-    applyMiddleware(thunk)
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 ));
 
 ReactDOM.render(
