@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter as Router,Route,HashHistory, Switch} from 'react-router-dom';
+import {BrowserRouter as Router,Route, Switch} from 'react-router-dom';
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
@@ -16,7 +16,7 @@ const store = createStore(reducer,compose(
 
 ReactDOM.render(
     <Provider store={store}>
-        <Router history={HashHistory}>
+        <Router>
             <Switch>
                 <Route exact path='/' component={Signin}/>
                 <Route path="/sign" component={Signin} />    

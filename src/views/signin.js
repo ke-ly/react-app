@@ -1,6 +1,7 @@
 import React,{Component} from "react";
 import { connect } from "react-redux";
 import { NavBar, List, InputItem, WhiteSpace, Button } from 'antd-mobile';
+import { Redirect } from 'react-router-dom'
 import { createForm } from 'rc-form';
 import { login } from "../store/auth.redux";
 
@@ -11,9 +12,9 @@ class BasicInput extends React.Component {
         
     }
     
-    render() {        
+    render() {       
+        const { getFieldProps } = this.props.form;      
         
-        const { getFieldProps } = this.props.form;
         return (
             <div>
                 <List renderHeader={() => ''}>
@@ -35,7 +36,7 @@ class BasicInput extends React.Component {
                 <WhiteSpace />
                 <WhiteSpace />
                 <div style={{padding:'0 15px'}}>
-                    <Button type="primary">
+                    <Button type="primary" onClick={this.props.login}>
                         立即登录  
                     </Button>
                 </div>            
@@ -48,30 +49,29 @@ const BasicInputExampleWrapper = createForm()(BasicInput);
 
 
 
-class Signin extends Component{    
-    
+class Signin extends Component{        
     render(){
-        console.log(this.props);
         return(
-            <div>                
+            <div>   
+                {this.props.isLog ? <Redirect to="/my"> </Redirect>: null}             
                 <NavBar
                     mode="dark" >
                     登录
                 </NavBar>
-                <BasicInputExampleWrapper history = {this.props.history}/>
+                <BasicInputExampleWrapper login={this.props.login}/>
             </div>
         )
     }
 }
 
 
-const maps = (state)=>{    
-    return {sss:state.authReducer.isLog}
+const mapStateToProps = (state)=>{    
+    return {isLog:state.authReducer.isLog}
 }
 
-const ac = {login}
+const actionToProps = {login}
 
 
-Signin = connect(maps,ac)(Signin)
+Signin = connect(mapStateToProps,actionToProps)(Signin)
 
 export default Signin;
