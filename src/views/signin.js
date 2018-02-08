@@ -2,6 +2,7 @@ import React,{Component} from "react";
 import { connect } from "react-redux";
 import { NavBar, List, InputItem, WhiteSpace, Button } from 'antd-mobile';
 import { Redirect } from 'react-router-dom'
+
 import { createForm } from 'rc-form';
 import { login } from "../store/auth.redux";
 
@@ -9,7 +10,7 @@ import { login } from "../store/auth.redux";
 
 class BasicInput extends React.Component {
     componentDidMount() {
-        
+          
     }
     
     render() {       

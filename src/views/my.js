@@ -11,7 +11,6 @@ import { logout } from '../store/auth.redux';
 class My extends Component{   
 
     render(){
-        console.log(this.props);
         
         const mypage = (
             <div>

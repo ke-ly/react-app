@@ -8,7 +8,10 @@ import registerServiceWorker from './registerServiceWorker';
 
 import Signin from './views/signin';
 import My from "./views/my";
+import User from "./views/userlist";
+import Boss from "./views/bosslist";
 import reducer from './store/reducer';
+import './config'
 import "./style.css";
 
 const store = createStore(reducer,compose(
@@ -23,6 +26,8 @@ ReactDOM.render(
                 <Route exact path='/' component={Signin}/>
                 <Route path="/sign" component={Signin} />    
                 <Route path="/my" component={My} />
+                <Route path="/user" component={User} />
+                <Route path="/boss" component={Boss} />
             </Switch>
         </Router>
     </Provider>, 
