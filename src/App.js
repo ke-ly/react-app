@@ -18,6 +18,7 @@ function App(){
     return (
         <BrowserRouter>
             <div>
+                <Route exact path="/" component={Login}></Route>
                 <Route exact path="/login" component={Login}></Route>
                 <Route exact path="/register" component={Register}></Route>
             </div>

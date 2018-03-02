@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getRedirectPath } from "../until"
 
 const LOGIN_SUCCESS = 'user/login_success';
 const REGISTER_SUCCESS = 'user/register_success';
@@ -13,10 +14,10 @@ const instState = {
 
 export function userReducer(state=instState,action){
     switch (action.type) {
-        case REGISTER_SUCCESS:                                   
-            return {...state,isAuth:true,...action.payload};    
+        case REGISTER_SUCCESS:                                           
+            return {...state,RedirectTo:getRedirectPath(action.payload.data),isAuth:true,...action.payload};    
         case LOGIN_SUCCESS:                        
-            return {...state,isAuth:true,...action.payload,msg:''};    
+            return {...state,RedirectTo:getRedirectPath(action.payload.data),isAuth:true,...action.payload,msg:''};    
         case ERROR_MSG:                        
             return {...state,msg:action.msg};    
         default:

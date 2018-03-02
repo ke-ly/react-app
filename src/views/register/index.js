@@ -53,7 +53,7 @@ class Register extends React.Component {
         
         return (
             <div className="container-login">      
-                {this.props.isAuth?<Redirect to="/test"></Redirect>:null}         
+                {this.props.isAuth?<Redirect to={this.props.RedirectTo}></Redirect>:null}         
                 <NavBar mode="dark">注册</NavBar>    
                 <div className="form-login">
                     <WhiteSpace size="lg"/>
