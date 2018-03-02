@@ -6,3 +6,7 @@
     left: 0;
     background-color: #f5f5f9;
 }
+.error-box{
+    padding-left: 15px;
+    color: red;
+}

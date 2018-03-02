@@ -17,7 +17,7 @@ axios.interceptors.response.use(function(response){
         Toast.hide();        
     },300)
     //对返回的数据进行一些处理
-    return {...response,config:"拦截器修改了"};
+    return {...response,config:"拦截器"};
 },function(error){
     //对返回的错误进行一些处理
     return Promise.reject(error);
