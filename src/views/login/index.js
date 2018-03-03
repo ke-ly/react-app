@@ -37,7 +37,7 @@ class Login extends React.Component {
         
         return (
             <div className="container-login">
-                 {this.props.isAuth?<Redirect to={this.props.RedirectTo}></Redirect>:null}
+                 {this.props.RedirectTo?<Redirect to={this.props.RedirectTo}></Redirect>:null}
                 <NavBar mode="dark">登录</NavBar>    
                 <div className="form-login">
                     <WhiteSpace size="lg"/>

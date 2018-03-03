@@ -13,9 +13,7 @@ axios.interceptors.request.use(function(config){
 //添加一个返回拦截器
 axios.interceptors.response.use(function(response){
     
-    setTimeout(()=>{
-        Toast.hide();        
-    },300)
+    Toast.hide(); 
     //对返回的数据进行一些处理
     return {...response,config:"拦截器"};
 },function(error){
