@@ -33,6 +33,8 @@ function errorMsg(msg){
 }
 
 export function getUserInfo(userInfo){
+    console.log('ss',userInfo);
+    
     return {type:GET_USER_INFO,payload:userInfo}
 }
 
@@ -59,7 +61,7 @@ export function loginAction(data){
     return dispatch => {
         axios.post('/user/login',data)
             .then(res=>{
-                if(res.status == 200 && res.data.code == 0){
+                if(res.status === 200 && res.data.code === 0){
                     return dispatch(loginCreator(res.data))
                 }else{
                     dispatch(errorMsg(res.data.msg))    
@@ -83,7 +85,7 @@ export function registerAction(data){
     return dispatch=>{
         axios.post('/user/register',data)
             .then(res=>{
-                if(res.status == 200 && res.data.code == 0){
+                if(res.status === 200 && res.data.code === 0){
                     dispatch({type:AUTH_SUCCESS,payload:res.data})    
                 }else{
                     dispatch(errorMsg(res.data.msg))

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import { NavBar, List, InputItem, Button, WingBlank, WhiteSpace, Toast, Radio } from 'antd-mobile'
+import { NavBar, List, InputItem, Button, WingBlank, WhiteSpace, Radio } from 'antd-mobile'
 
 import { registerAction } from '../../store/user.redux'
 

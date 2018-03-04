@@ -14,17 +14,19 @@ class AuthRouter extends React.Component {
     componentDidMount(){
         const publicList = ['/login','/register'];
         const pathName = this.props.location.pathname;
-
+             
         if(publicList.includes(pathName)){
             return null;            
         }
                 
         axios.get('/user/info')
             .then(res=>{
-                if(res.status == 200){
-                    if(res.data.code == 0){
+                if(res.status === 200){
+                    if(res.data.code === 0){
+                        console.log(pathName);
                         this.props.getUserInfo(res.data.data)
                     }else{
+                        console.log(111);
                         this.props.history.push('/login')
                     }
                 }             

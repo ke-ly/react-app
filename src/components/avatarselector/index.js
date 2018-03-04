@@ -2,9 +2,9 @@ import React from 'react';
 import { Grid } from 'antd-mobile'
 
 class AvatarSelector extends React.Component {
-    constructor (props){
-        super(props)
-    }
+    // constructor (props){
+    //     super(props)
+    // }
 
     render(){         
         const avatarList = Array.from(new Array(12)).map((v,i)=>{            

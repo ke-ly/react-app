@@ -9,3 +9,18 @@ bdoy{
     padding-left: 15px;
     color: red;
 }
+.am-navbar{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+.am-navbar+*{
+    margin-top: 45px;
+}
+.am-tab-bar{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 10;
+}
