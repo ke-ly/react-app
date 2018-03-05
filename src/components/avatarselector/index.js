@@ -1,16 +1,17 @@
 import React from 'react';
 import { Grid } from 'antd-mobile'
+import PropTypes from 'prop-types'
 
 class AvatarSelector extends React.Component {
-    // constructor (props){
-    //     super(props)
-    // }
+    static propType = {
+        selectAvatar:PropTypes.func.isRequired
+    } 
 
     render(){         
         const avatarList = Array.from(new Array(12)).map((v,i)=>{            
             return {
                 icon:require(`./imgs/avatar-${i+1}.jpg`),
-                text:`头像${i+1}`
+                text:`avatar-${i+1}`
             }
         });        
         return (

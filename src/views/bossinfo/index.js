@@ -44,12 +44,13 @@ class BossInfo extends React.Component {
     
 
     render(){
-        const RedirectTo = this.props.RedirectTo?<Redirect to={this.props.RedirectTo}></Redirect>:null;
+        const pathName = this.props.location.pathname;        
+        const RedirectTo = (this.props.RedirectTo&&this.props.RedirectTo!==pathName)?<Redirect to={this.props.RedirectTo}></Redirect>:null;
         
         return (
             <div className="boss-info">    
                 {RedirectTo}            
-                <NavBar>BOSS信息完善</NavBar>
+                <NavBar className="fixed-bar">BOSS信息完善</NavBar>
                 <AvatarSelector 
                     selectAvatar={this.changeAvatar}/>
                 <WhiteSpace/>

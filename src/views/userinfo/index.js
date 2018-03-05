@@ -44,35 +44,27 @@ class UserInfo extends React.Component {
     
 
     render(){
-        const RedirectTo = this.props.RedirectTo?<Redirect to={this.props.RedirectTo}></Redirect>:null;
+        const pathName = this.props.location.pathname;        
+        const RedirectTo = (this.props.RedirectTo&&this.props.RedirectTo!==pathName)?<Redirect to={this.props.RedirectTo}></Redirect>:null;
         
         return (
             <div className="boss-info">    
                 {RedirectTo}            
-                <NavBar>牛人信息完善</NavBar>
+                <NavBar className="fixed-bar">牛人信息完善</NavBar>
                 <AvatarSelector 
                     selectAvatar={this.changeAvatar}/>
                 <WhiteSpace/>
                 <List>
                     <InputItem 
-                        placeholder="请输入招聘职位"
+                        placeholder="请输入应聘职位"
                         onChange={item=>this.onChange('title',item)}>
-                        招聘职位
-                    </InputItem>    
-                    <InputItem 
-                        placeholder="请输入公司名称"
-                        onChange={item=>this.onChange('company',item)}>
-                        公司名称
-                    </InputItem>    
-                    <InputItem 
-                        placeholder="请输入职位薪资"
-                        onChange={item=>this.onChange('money',item)}>
-                        职位薪资
-                    </InputItem>    
+                        应聘职位
+                    </InputItem>   
+                     
                     <TextareaItem
                         rows={4}
-                        title="职位要求"
-                        placeholder="请输入职位要求"
+                        title="个人简介"
+                        placeholder="请输入个人简介"
                         onChange={item=>this.onChange('desc',item)}>
                     </TextareaItem>
                 </List>                    

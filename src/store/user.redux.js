@@ -33,18 +33,13 @@ function errorMsg(msg){
 }
 
 export function getUserInfo(userInfo){
-    console.log('ss',userInfo);
-    
     return {type:GET_USER_INFO,payload:userInfo}
 }
 
 export function updateAction(userInfo){
-    console.log(userInfo);
-    // return {type:AUTH_SUCCESS,payload:userInfo}
     return dispatch =>{
         axios.post('/user/update',userInfo)
         .then(res=>{
-            console.log(res);
             dispatch({type:AUTH_SUCCESS,payload:res.data})            
         })
     }

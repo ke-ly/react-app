@@ -6,6 +6,19 @@ const Router = express.Router();
 const model = require('./model');
 const User = model.getModel('user');
 
+Router.get('/list',(req,res)=>{
+
+    const { type } = req.query;
+
+    User.find({type},_filter,(e,d)=>{
+        if(e){
+            return res.json({code:1,msg:'后端出错了'})
+        }     
+        if(d){
+            return res.json({code:0,data:d})
+        }
+    })
+})
 Router.get('/info',(req,res)=>{
 
     const { userid } = req.cookies;

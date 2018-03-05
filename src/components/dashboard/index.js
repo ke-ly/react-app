@@ -1,46 +1,88 @@
 import React from 'react'
-import {NavBar, TabBar} from 'antd-mobile'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { Route, Switch } from 'react-router-dom'
+import { NavBar } from 'antd-mobile'
+import axios from 'axios';
 
 import BossList from '../../views/bosslist'
+import UserList from '../../views/userlist'
+import TabBarList from '../tabbarlist'
 
+
+function Msg(){
+    return <h1>消息页面</h1>
+}
+function Me(){
+    return <h1>个人中心</h1>
+}
+
+@connect(
+    state=>state.userReducer
+)
 class Dashboard extends React.Component {
 
-    render(){
-        const iconImg = 'https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg'
+    constructor(props) {
+        super(props)
+        
+        this.state = {
+            userType:''    
+        }
+    }   
+
+    componentDidMount(){       
+        
+    }
+
+    render(){        
+        const pathname = this.props.location.pathname;
+        
+        const dashList = [
+            {
+                path:'/boss',
+                title:'牛人列表',
+                text:'牛人',
+                icon:'boss',
+                component:BossList,
+                hide:this.props.type === 'user'
+            },
+            {
+                path:'/user',
+                title:'BOSS列表',
+                text:'老板',
+                icon:'job',
+                component:UserList,
+                hide:this.props.type === 'boss'
+            },
+            {
+                path:'/msg',
+                title:'消息中心',
+                text:'消息',
+                icon:'msg',
+                component:Msg
+            },
+            {
+                path:'/me',
+                title:'个人中心',
+                text:'我的',
+                icon:'user',
+                component:Me
+            },
+        ]
+        
         return (
             <div className="dashboard">
-                <NavBar>
-                    header
+                <NavBar className="fixed-bar">
+                    {dashList.find(v=>(v.path===pathname)).title}
                 </NavBar>  
-                <BrowserRouter>
-                    <Switch>
-                        <Route path="/boss" component={BossList}></Route>  
-                    </Switch>    
-                </BrowserRouter>
-                <TabBar>
-                    <TabBar.Item
-                        title="牛人"
-                        key="user"
-                        icon={
-                            <div style={{width:22,height:22,background:`url(${iconImg}) center center /  21px 21px no-repeat`}}></div>
-                        }>
-                    </TabBar.Item>
-                    <TabBar.Item
-                        title="BOSS"
-                        key="boss"
-                        icon={
-                            <div style={{width:22,height:22,background:`url(${iconImg}) center center /  21px 21px no-repeat`}}></div>
-                        }>
-                    </TabBar.Item>
-                    <TabBar.Item
-                        title="我的"
-                        key="my"
-                        icon={
-                            <div style={{width:22,height:22,background:`url(${iconImg}) center center /  21px 21px no-repeat`}}></div>
-                        }>
-                    </TabBar.Item>
-                </TabBar>
+                <Switch>
+                    {
+                        dashList.map(v=>(
+                            <Route key={v.path} path={v.path} component={v.component}></Route>
+                        )) 
+                    }
+                </Switch>   
+
+                <TabBarList navData={dashList}/>
             </div>
         )
     }
