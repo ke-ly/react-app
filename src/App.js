@@ -1,7 +1,7 @@
 import React from 'react'
 import {BrowserRouter,Route,Switch} from 'react-router-dom'
-import AuthRouter from './components/authrouter/authrouter'
 
+import AuthRouter from './components/authrouter/authrouter'
 import Login from './views/login'
 import Register from './views/register'
 import Bossinfo from './views/bossinfo'

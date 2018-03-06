@@ -15,8 +15,8 @@ export function userReducer(state=instState,action){
     switch (action.type) {
         case GET_USER_INFO:                                           
             return {...state,...action.payload};        
-        case AUTH_SUCCESS:                        
-            return {...state,RedirectTo:getRedirectPath(action.payload.data),...action.payload,msg:''};    
+        case AUTH_SUCCESS:                                
+            return {...state,RedirectTo:getRedirectPath(action.payload),...action.payload,msg:''};    
         case ERROR_MSG:                        
             return {...state,msg:action.msg};    
         default:
@@ -24,7 +24,7 @@ export function userReducer(state=instState,action){
     }
 }
 
-function loginCreator (data){
+function loginCreator (data){    
     return {type:AUTH_SUCCESS,payload:data}
 }
 
@@ -40,7 +40,7 @@ export function updateAction(userInfo){
     return dispatch =>{
         axios.post('/user/update',userInfo)
         .then(res=>{
-            dispatch({type:AUTH_SUCCESS,payload:res.data})            
+            dispatch({type:AUTH_SUCCESS,payload:res.data.data})            
         })
     }
     
@@ -57,7 +57,7 @@ export function loginAction(data){
         axios.post('/user/login',data)
             .then(res=>{
                 if(res.status === 200 && res.data.code === 0){
-                    return dispatch(loginCreator(res.data))
+                    return dispatch(loginCreator(res.data.data))
                 }else{
                     dispatch(errorMsg(res.data.msg))    
                 }                
@@ -81,7 +81,7 @@ export function registerAction(data){
         axios.post('/user/register',data)
             .then(res=>{
                 if(res.status === 200 && res.data.code === 0){
-                    dispatch({type:AUTH_SUCCESS,payload:res.data})    
+                    dispatch({type:AUTH_SUCCESS,payload:res.data.data})    
                 }else{
                     dispatch(errorMsg(res.data.msg))
                 }                

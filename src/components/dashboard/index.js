@@ -2,20 +2,19 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
 import { NavBar } from 'antd-mobile'
-import axios from 'axios';
 
 import BossList from '../../views/bosslist'
 import UserList from '../../views/userlist'
+import Account from '../../views/account'
 import TabBarList from '../tabbarlist'
 
 
 function Msg(){
     return <h1>消息页面</h1>
 }
-function Me(){
-    return <h1>个人中心</h1>
-}
-
+// function Account(){
+//     return <h1>Account</h1>
+// }
 @connect(
     state=>state.userReducer
 )
@@ -65,7 +64,7 @@ class Dashboard extends React.Component {
                 title:'个人中心',
                 text:'我的',
                 icon:'user',
-                component:Me
+                component:Account
             },
         ]
         

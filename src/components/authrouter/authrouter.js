@@ -6,12 +6,13 @@ import { getUserInfo } from '../../store/user.redux.js'
 
 @withRouter
 @connect(
-    null,
+    state=>state.userReducer,
     {getUserInfo}
 )
 class AuthRouter extends React.Component {
 
     componentDidMount(){
+       
         const publicList = ['/login','/register'];
         const pathName = this.props.location.pathname;
              
@@ -22,16 +23,21 @@ class AuthRouter extends React.Component {
             .then(res=>{
                 if(res.status === 200){
                     if(res.data.code === 0){
+
+                        // if(`/${res.data.data.type}` !== pathName){
+                        //     this.props.history.push('/login')
+                        // }
+
                         this.props.getUserInfo(res.data.data)
+                      
                     }else{
-                        console.log(111);
                         this.props.history.push('/login')
                     }
                 }             
             })
     }
 
-    render(){
+    render(){                
         return null;
     }
 }
